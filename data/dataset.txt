@@ -1,0 +1,6 @@
+Please place the dataset from our website http://humangrasp.io here.
+
+We expect to see files:
+
+classification/metadata.mat
+weights/metadata.mat

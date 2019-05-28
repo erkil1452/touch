@@ -1,0 +1,4 @@
+*.pyc
+snapshots
+/data/weights/metadata.mat
+/data/classification/metadata.mat

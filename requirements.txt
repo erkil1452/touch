@@ -1,0 +1,7 @@
+numpy==1.15.4
+scikit-learn==0.19.1
+scipy==1.1.0
+torch==0.4.1
+torchfile==0.1.0
+-e git+https://github.com/ncullen93/torchsample.git@21507feb258a25bf6924e4844e578624cda72140#egg=torchsample
+torchvision==0.2.1
