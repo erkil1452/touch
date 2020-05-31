@@ -161,7 +161,7 @@ class Trainer(object):
             msg = '{phase}: [{0}][{1}/{2}]\tTime {batch_time.val:.3f} ({batch_time.avg:.3f})'.format(
                  epoch, i, len(data_loader), batch_time=batch_time,
                 data_time=data_time,
-                phase=('Test'))
+                phase=('Train' if isTrain else 'Test'))
 
             for k,v in losses.items():
                 msg += '\t{0} {loss.val:.4f} ({loss.avg:.4f})'.format(k, loss = v)
