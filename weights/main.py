@@ -94,7 +94,7 @@ class Trainer(object):
         defaultObjects = 'chain, full_can, mug, multimeter, stapler'
 
         print('Running test for object(s) "%s"...' % (self.val_loader.dataset.meta['objects'][args.unseenObj] if args.unseenObj >= 0 else defaultObjects))
-        _, errorTest = self.step(self.val_loader, self.model.epoch)
+        _, errorTest = self.step(self.val_loader, self.model.epoch, isTrain = False)
 
         print('Test error = %.3f gram.' % errorTest)
 
@@ -110,7 +110,7 @@ class Trainer(object):
 
         from WeightsModel import WeightsModel as Model
 
-        initShapshot = os.path.join('snapshots', 'weights', initShapshot, 'checkpoint.pth.tar')
+        initShapshot = args.snapshotDir
         if args.reset:
             initShapshot = None
 
@@ -144,7 +144,6 @@ class Trainer(object):
                 }
 
             res, loss = self.model.step(inputsDict, False, params = {'debug': True})
-
 
             for k,v in loss.items():
                 if not k in losses:

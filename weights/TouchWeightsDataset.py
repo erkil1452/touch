@@ -45,8 +45,6 @@ class TouchWeightsDataset(data.Dataset):
             self.split = 'test'
         elif split == 'train':
             self.split = 'train'
-        elif split == 'all':
-            self.split = 'all'
         else:
             raise RuntimeError('Unknown split "%s"!' % split)
 
@@ -67,12 +65,14 @@ class TouchWeightsDataset(data.Dataset):
                 isTest = np.logical_or(isTest, self.meta['objectId'].flatten() == oId)
                 print('\tSelected #%d (%s) as a secondary test object #%d.' % (oId, self.meta['objects'][oId], i))
 
+            
+
             # Define new split
             mask = isTest if split == 'test' else np.logical_not(isTest)
-            self.valid0 = mask
-            self.validN = mask
+            self.valid0 = np.logical_and(self.valid0, mask)
+            self.validN = np.logical_and(self.validN, mask)
         else:
-            raise RuntimeError("Test object is required!")
+            raise RuntimeError("Object must be provided!")
 
         # Generate tuples
         np.random.seed(157843)
