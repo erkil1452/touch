@@ -68,14 +68,11 @@ class TouchWeightsDataset(data.Dataset):
                 print('\tSelected #%d (%s) as a secondary test object #%d.' % (oId, self.meta['objects'][oId], i))
 
             # Define new split
-            self.meta['splitId'][isTest] = np.argwhere(self.meta['splits'] == 'test').flatten()[0]
-            self.meta['splitId'][np.logical_not(isTest)] = np.argwhere(self.meta['splits'] == 'train').flatten()[0]
-
-
-        if not self.split == 'all':
-            splitId = np.argwhere(self.meta['splits'] == self.split).flatten()[0]
-            self.valid0 = np.logical_and(self.valid0, self.meta['splitId'].flatten() == splitId)
-            self.validN = np.logical_and(self.validN, self.meta['splitId'].flatten() == splitId)
+            mask = isTest if split == 'test' else np.logical_not(isTest)
+            self.valid0 = mask
+            self.validN = mask
+        else:
+            raise RuntimeError("Test object is required!")
 
         # Generate tuples
         np.random.seed(157843)
