@@ -3,7 +3,7 @@
 ## Introduction
 This is a Pytorch based code for object classification and object estimation methods presented in the paper "Learning the signatures of the human grasp using a scalable tactile glove".
 
-It relies on Pytorch 0.4.1 (or newer) and the dataset that can be downloaded separately from [http://humangrap.io](http://humangrap.io) .
+It relies on Pytorch 0.4.1 (or newer) and the dataset that can be downloaded separately from [http://humangrasp.io](http://humangrasp.io) .
 
 
 ## System requirements
@@ -19,7 +19,7 @@ Requires CUDA and Python 3.6+ with following packages (exact version may not be 
 
 ## Dataset preparation
 
-1. Download the `classification` and/or `weights` dataset from [http://humangrap.io](http://humangrap.io) .
+1. Download the `classification` and/or `weights` dataset from [http://humangrasp.io](http://humangrasp.io) .
 2. Extract the dataset metadata.mat files to a sub-folder `data\[task]`. The resulting structure should be something like this:
 ```
 data
@@ -28,7 +28,7 @@ data
 |--weights
         |--metadata.mat
 ```
-The images in the dataset are for illustration only and are not used by this code. More information about the dataset structure is availble in [http://humangrap.io](http://humangrap.io) .
+The images in the dataset are for illustration only and are not used by this code. More information about the dataset structure is availble in [http://humangrasp.io](http://humangrasp.io) .
 
 3. Alternatively, extract the dataset to a different folder and use a runtime argument `--dataset [path to metadata.mat]` to specify its location.
 
