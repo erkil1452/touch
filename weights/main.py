@@ -143,7 +143,7 @@ class Trainer(object):
                 'weight': inputs[4],
                 }
 
-            res, loss = self.model.step(inputsDict, False, params = {'debug': True})
+            res, loss = self.model.step(inputsDict, isTrain=isTrain, params = {'debug': True})
 
             for k,v in loss.items():
                 if not k in losses:
